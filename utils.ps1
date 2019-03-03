@@ -48,3 +48,22 @@ function make-pdf {
     $chrome = 'c:\Program Files (x86)\Google\Chrome\Application\chrome.exe'
     & $chrome --headless --disable-gpu --enable-local-file-accesses --print-to-pdf="$($pdf)" "$($html)"
 }
+
+<#
+.DESCRIPTION
+Sometimes need to cleanup html files for conversion using Pandoc. This function is meant to help cleanup such files.
+#>
+function Cleanup-Utf {
+    param(
+        $path = "",
+        $filter = "*.html"
+    )
+
+    $files= get-childitem -path $path -filter $filter
+    foreach ($f in $files) {
+        $content = get-content -path $f.FullName
+        write-output "Processing $($f.FullName)"
+        Set-Content -Path $f.FullName -Encoding UTF8 -Value $content
+        }
+
+}
