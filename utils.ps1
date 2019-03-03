@@ -6,7 +6,7 @@ Helper functions to support other scripts.
 Helper functions to allow scripts to zip/unzip, make-pdf using Chrome, and write to application log.
 
 .NOTES
-    Author: PSChakravarthy
+    Author: PS Chakravarthy
 #>
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 function Unzip
